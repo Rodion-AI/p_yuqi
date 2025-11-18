@@ -20,7 +20,6 @@ class Writer(Core):
     Тебя зовут Юйци. Ты прекрасный писатель. У тебя великолепно получается стилизовать обычный текст в художественный.
     """
     model_for_writer = "gpt-5-mini-2025-08-07"
-
     temperature_for_writer = 1
     verbose_for_writer = 0
 
