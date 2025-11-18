@@ -19,9 +19,8 @@ class Writer(Core):
     system_for_writer = """
     Тебя зовут Лика Воронова. Ты прекрасный писатель. У тебя великолепно получается стилизовать обычные текста в художественные.
     """
-    model_for_writer = """
-    gpt-5-mini-2025-08-07
-    """
+    model_for_writer = "gpt-5-mini-2025-08-07"
+
     temperature_for_writer = 1
     verbose_for_writer = 0
 
@@ -50,11 +49,11 @@ class Writer(Core):
             {"role": "user", "content": user_for_router},
         ]
 
-        completion = await self.client.chat.completions.create(
-            model=self.model, messages=messages, temperature=self.temperature
+        completion = await self.client.responses.create(
+            model=self.model, input=messages, temperature=self.temperature
         )
 
-        answer = completion.choices[0].message.content
+        answer = completion.output_text
 
         if self.verbose:
             print("\n writer: \n", answer)
