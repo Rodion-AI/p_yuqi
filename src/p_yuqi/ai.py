@@ -32,3 +32,7 @@ class Yuqi:
         self.user_context[user_id] += "Я: " + output
 
         return output
+    
+    # method clear history
+    async def delete_history(self, user_id: int):
+        self.user_context[user_id] = ""
