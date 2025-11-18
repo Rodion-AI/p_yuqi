@@ -59,15 +59,21 @@ async def command_help_handler(message: Message):
 
     await send_message_keyboard(
         message,
-        "Я отлично умею стилизовать или писать тексты в художественном стиле. Ниже вы можете найти кнопку для нового запроса.",
+        f"Я отлично умею стилизовать или писать тексты в художественном стиле. Ниже вы можете найти кнопку для нового запроса. Бесплатный лимит 3 запроса в сутки",
         reply_keyboard(),
     )
 
 
 @dp.message(F.text == "Новый запрос")
 async def new_request(message: Message):
-    await yuqi.delete_history(message.from_user.id)  # type: ignore
-    await message.answer("Переходим к другому тексту")
+
+    left = await yuqi.delete_history(message.from_user.id)  # type: ignore
+    if left >= 0:
+        await message.answer(
+            f"Переходим к другому тексту."
+        )
+    else:
+        await message.answer("На сегодня лимит исчерпан ❤️")
 
 
 @dp.message()
