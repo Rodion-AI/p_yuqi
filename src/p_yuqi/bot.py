@@ -51,7 +51,7 @@ async def command_help_handler(message: Message):
             keyboard=buttons,
             resize_keyboard=True,
             one_time_keyboard=True,
-            input_field_placeholder=("Пожалуйста, нажмите кнопку ниже"),
+            input_field_placeholder=("Текст"),
         )
 
     async def send_message_keyboard(message: Message, text: str, markup):
