@@ -82,10 +82,8 @@ async def echo_handler(message: Message):
         )
         await message.answer(response)
 
-    except TypeError as e:
-        # Логируем, чтобы не терять ошибки
-        logging.exception("TypeError in neuro_writer", exc_info=e)
-        await message.answer("Я пока не могу обработать такое сообщение.")
+    except TypeError:
+        await message.answer("Не могу обработать такое сообщение.")
 
 
 
